@@ -83,7 +83,9 @@ struct RegisterView: View {
                         .foregroundColor(Color("specialOrange"))
                 }
                 
-                BigButtonView(title: "Register", action: registerVM.register)
+                BigButtonView(title: "Register",
+                              action: {registerVM.register()}
+                )
                 
                 Spacer()
                 

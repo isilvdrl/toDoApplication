@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 class RegisterViewModel : ObservableObject{
     @Published var email: String = ""
@@ -25,6 +26,27 @@ class RegisterViewModel : ObservableObject{
         guard validate() else{
         return
         }
+        Auth.auth().createUser(withEmail: email, password: password){[weak self] result , err in
+            guard let userID = result?.user.uid else{
+                if err != nil{
+                    
+                    self?.error = err!.localizedDescription
+                    
+                    return
+                }
+                return
+            }
+            // insert edilicek
+            self?.insertUser(id: userID)
+        }
+    }
+    
+    private func insertUser(id: String){
+        let newUser = User(id: id, email: email)
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(id)
+            .setData(newUser.asDictionary())
     }
     
     private func validate() -> Bool{

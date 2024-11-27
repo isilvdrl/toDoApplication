@@ -81,7 +81,7 @@ struct LoginView: View {
                 }
                 .padding(.top,20)
                 
-                BigButtonView(title: "Login", action: loginVM.login)
+                BigButtonView(title: "Login", action: {loginVM.login()})
                 
                 Spacer()
                 VStack{
