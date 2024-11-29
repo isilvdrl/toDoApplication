@@ -8,11 +8,39 @@
 import SwiftUI
 
 struct NewItemView: View {
+    @StateObject var newItemVM = NewItemViewModel()
+    @Binding var showNewItemView: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("New Item")
+                .bold()
+                .foregroundColor(Color("specialPurple"))
+                .font(.title)
+            
+            TextField("Title", text: $newItemVM.title)
+                .padding(.horizontal,20)
+                .padding(.top,10)
+            
+            DatePicker("Bitiş Tarihi",selection: $newItemVM.dueDate)
+                .datePickerStyle(GraphicalDatePickerStyle())
+            
+            BigButtonView(title: "Save",
+                action:{
+                    if newItemVM.canSave(){
+                        newItemVM.save()
+                        showNewItemView = false
+                    }else{
+                        newItemVM.showAlert = true
+                    }
+                })
+            .alert(isPresented: $newItemVM.showAlert) {
+                Alert(title: Text("Error"), message: Text("Please fill all fields."), dismissButton: .default(Text("OK")))
+            }
+        }
     }
 }
 
 #Preview {
-    NewItemView()
+    NewItemView( showNewItemView: Binding(get: { false }, set: { _ in }))
 }

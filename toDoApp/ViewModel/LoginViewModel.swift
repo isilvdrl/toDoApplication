@@ -23,6 +23,7 @@ class LoginViewModel : ObservableObject{
         guard validate() else{
             return
         }
+        Auth.auth().signIn(withEmail: email, password: password)
     }
     func validate() -> Bool {
         guard !email.trimmingCharacters(in: .whitespaces).isEmpty,
