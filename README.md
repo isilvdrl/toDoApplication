@@ -1,4 +1,4 @@
-I have used Firebase Authentication and Firestore with SwiftUI in this project
+I have used Firebase Authentication and Firestore with SwiftUI  and MVVM in this project
 
 <img width="495" alt="Screenshot 2024-12-02 at 16 01 33" src="https://github.com/user-attachments/assets/ff21386c-7d1d-45a1-8597-6f45ba5824bc">
 <img width="495" alt="Screenshot 2024-12-02 at 16 01 52" src="https://github.com/user-attachments/assets/840f05dd-acca-4fc2-97b3-76dc306ae018">
