@@ -22,27 +22,35 @@ struct ToDoListView: View {
     var body: some View {
         NavigationView{
             VStack{
+                Image("Designer")
+                    .resizable()
+                    .frame(width: 40,height: 40)
+                
                 List(items){item in
                     ToDoListItemView(item: item)
                         .swipeActions{
                             Button(action:{
                                 toDoListVM.delete(id: item.id)
-                            },
-                                   label: {Text("Delete")}
-                            )
-                                .foregroundColor(Color("specialOrange"))
+                            }){
+                                Text("Delete")
+                                    .padding()
+                                    .cornerRadius(8)
+                            }
+                                
+                            
+                                
                         }
                     
                 }
                 //.listStyle(PlainListStyle())
-                .padding(.horizontal,20)
+                //.padding(.horizontal,20)
             }
-            .navigationTitle("ToDo List")
             .toolbar{
                 Button{
                     toDoListVM.showNewItemView = true
                 } label:{
                     Image(systemName: "plus" )
+                        .foregroundColor(Color("specialPink"))
                 }
             }
             .sheet(isPresented: $toDoListVM.showNewItemView,

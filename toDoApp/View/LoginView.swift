@@ -19,7 +19,7 @@ struct LoginView: View {
                 //Logo
                 ZStack{
                     
-                    Image("feeding")
+                    Image("Designer")
                         .resizable()
                         .frame(width: 100,height:100)
                         //.padding(.top,0)

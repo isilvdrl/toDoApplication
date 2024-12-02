@@ -17,6 +17,7 @@ struct ToDoListItemView: View {
                 
                 Text(item.title)
                     .font(.title)
+                    .foregroundColor(.black.opacity(0.7))
                 Text("\(Date(timeIntervalSince1970: item.dueDate).formatted(date:.abbreviated, time:.shortened))")
                         .font(.footnote)
                         .foregroundColor(Color("specialOrange"))

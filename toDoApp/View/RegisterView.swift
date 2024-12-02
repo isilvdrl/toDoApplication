@@ -17,7 +17,7 @@ struct RegisterView: View {
         NavigationStack{
             VStack{
                 
-                Image("feeding")
+                Image("Designer")
                     .resizable()
                     .frame(width: 100,height:100)
                     
